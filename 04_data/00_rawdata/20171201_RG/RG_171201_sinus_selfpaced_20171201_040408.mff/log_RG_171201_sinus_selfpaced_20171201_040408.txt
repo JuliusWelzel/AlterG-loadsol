@@ -1,0 +1,102 @@
+00:00:00.000.977: --- EEG START RECORDING ---------------------------------------------------------------------------------
+00:00:00.001.150:          Name: RG_171201_sinus_selfpaced_20171201_040408.mff
+00:00:00.001.279:          Date: 2017-12-01 04:04:08.864999 PM GMT+1, unix 1512140648, micro 1512140648864999
+00:00:00.001.336:   Acquisition: 5.3.0.1 (r23182)
+00:00:00.001.392:      Mac OS X: 10.11.6 (15G31)
+00:00:00.001.444:         Model: MacBookPro6,1
+00:00:00.001.496:           GHz: 2.53
+00:00:00.001.540:  # Processors: 4
+00:00:00.001.588:        Memory: 4.00 GB
+00:00:00.001.637:           MFF: 3
+00:00:00.001.687:  Amp Serial #: A010120287
+00:00:00.001.747:      Amp Type: NA300
+00:00:00.001.796:  Amp Firmware: 2.0
+00:00:00.001.842:  Amp Hardware: 0.11
+00:00:00.001.891:  Amp Channels: 256
+00:00:00.001.961: ENOLISController.mm:955 ENOLISController:getAmpDetails: 
+00:00:00.002.813: Sensor Layout: HydroCel GSN 256 1.0
+00:00:00.002.927:       PNS Set: test_171017 1.0
+00:00:00.002.990: Sampling Rate: 250 s/s
+00:00:00.003.036:         Video: None
+00:00:00.003.078:         Audio: None
+00:00:00.003.178: ---------------------------------------------------------------------------------------------------------
+00:00:00.010.243: NSAToolbarDelegate.m:694 NSAToolbarDelegate:updateInterface _onOff YES, _recordButton YES, _stopButton YES,
+00:00:00.012.154: NSARecording.m:305 NSARecording:initAtPath:createIfNotFound:nsaController:startDate: signal blocks 7
+00:00:00.012.302: NSARecording.m:313 NSARecording:initAtPath:createIfNotFound:nsaController:startDate: xml 7
+00:00:00.012.388: ENOLISController.mm:955 ENOLISController:getAmpDetails: 
+00:00:00.013.318: NSARecording.m:334 NSARecording:initAtPath:createIfNotFound:nsaController:startDate: EEG shift: 36 ms
+00:00:00.013.508: NSARecording.m:335 NSARecording:initAtPath:createIfNotFound:nsaController:startDate: EEG shift: 9 samples
+00:00:00.013.609: NSARecording.m:350 NSARecording:initAtPath:createIfNotFound:nsaController:startDate: /Users/EGI/Documents/Net Station User Data/Sessions/RG_171201_sinus_selfpaced_20171201_040408.mff
+00:00:00.061.280: NSARecording.m:2064 NSARecording:writeInfo_EEG 
+00:00:00.062.982: NSARecording.m:2444 NSARecording:copySensorlayoutFile 00:00:00.063.012: NSARecording.m:2099 
+NSARecording:writeInfo_EEG
+00:00:00.063.154: NSARecording.m:2482 NSARecording:copyCoordinatesFile 
+00:00:00.063.316: ENOLISController.mm:955 ENOLISController:getAmpDetails: 
+00:00:00.064.106: NSARecording.m:2268 NSARecording:writeInfo_PIB 
+00:00:00.064.226: NSARecording.m:2527 NSARecording:copyPNSSetFile 
+00:00:00.064.287: ENOLISController.mm:955 ENOLISController:getAmpDetails: 
+00:00:00.065.026: ENOLISController.mm:955 ENOLISController:getAmpDetails: 
+00:00:00.065.686: NSARecording.m:2455 00:00:00.065.723: NSARecording.m:2390 NSARecording:writePatientInfo 
+NSARecording:copySensorlayoutFile
+00:00:00.065.920: NSARecording.m:2976 NSARecording:writeTRsPerVolume None
+00:00:00.066.014: NSARecording.m:3037 NSARecording:writeAcquiringXML 
+00:00:00.067.354: NSARecording.m:2064 NSARecording:writeInfo_EEG 
+00:00:00.068.348: NSARecording.m:2499 NSARecording:copySensorlayoutFile
+00:00:00.070.592: NSARecording.m:2290 NSARecording:writeInfo_PIB
+00:00:00.071.367: NSARecording.m:2566 NSARecording:copyPNSSetFile
+00:00:00.076.432: NSARecording.m:2404 NSARecording:writePatientInfo
+00:00:00.077.643: NSARecording.m:3050 NSARecording:writeAcquiringXML
+00:00:00.079.438: NSARecording.m:2099 NSARecording:writeInfo_EEG
+00:00:00.224.258: EAmpController.m:2127 EAmpController:currentSampleDate currentSampleDate 2017-12-01 15:04:08 +0000, sampleCount_ 7341953 - currentAmpTime 146844036 = -139502083
+00:00:00.224.475: PLTRecord.m:1652 PLTRecord:sampleData:sampleCount: 
+00:00:00.224.553: 
+00:00:00.224.631: Sample Provider timing info
+00:00:00.224.694:      Reference Date: 1 January 1970, GMT
+00:00:00.224.775:      Amp Start Time: 1512133306915999
+00:00:00.224.924:      Amp Start Date: 2017-12-01 02:01:46.915999 PM GMT+1
+00:00:00.225.037: Current Sample Date: 2017-12-01 04:04:08.868999 PM GMT+1
+00:00:00.225.104:      Stream Up Time: 7341.953000 seconds
+00:00:00.225.170: 
+00:00:00.226.960: EAmpController.m:2127 EAmpController:currentSampleDate currentSampleDate 2017-12-01 15:04:08 +0000, sampleCount_ 7341953 - currentAmpTime 146844036 = -139502083
+00:00:00.227.770: NSARecording.m:709 NSARecording:writeSampleData:sampleCount: 
+00:00:00.227.897: NSARECORDING first sample received
+00:00:00.227.970:        stream uptime 7341.953000
+00:00:00.228.104: recording _startDate 2017-12-01 04:04:08.868999 PM GMT+1, epoch 1512140648, micro 1512140648868999
+00:00:00.228.198:   stream sample date 2017-12-01 04:04:08.868999 PM GMT+1
+00:00:00.228.258:                 diff 0.000000
+00:00:00.228.331:   _end_ns (8119970058673) - _start_ns (8119738058673) = 232000000, sampleCount 58
+00:00:00.228.394: NSARecording.m:1958 NSARecording:writeInfo 
+00:00:00.228.546: NSARecording.m:782 NSARecording:writeSampleData:sampleCount: EEG shift: Remove 9 samples from epoch 1
+00:00:00.228.571: NSARecording.m:1982 NSARecording:writeInfo
+00:02:00.777.355: NSAEEGController.m:1104 NSAEEGController:channelVisibilityChanged: 
+00:02:02.120.918: NSAEEGController.m:1104 NSAEEGController:channelVisibilityChanged: 
+00:02:08.950.250: NSAEEGController.m:1104 NSAEEGController:channelVisibilityChanged: 
+00:02:10.526.288: NSAEEGController.m:1104 NSAEEGController:channelVisibilityChanged: 
+00:03:01.486.565: PLTRecord.m:656 PLTRecord:stopAll 
+00:03:01.486.754: --- EEG STOP RECORDING ----------------------------------------------------------------------------------
+00:03:01.486.874: --- EEG HANDLE STOP RECORDING ---------------------------------------------------------------------------
+00:03:01.490.542: PLTRecord.m:1355 PLTRecord:handleStopRecording Recording duration 181.488000, record duration 181.488000
+00:03:01.492.671: NSARecording.m:2390 NSARecording:writePatientInfo 
+00:03:01.492.888: NSARecording.m:2404 NSARecording:writePatientInfo
+00:03:01.493.782: 
+00:03:01.493.939: Sample Provider timing info
+00:03:01.494.019:     Amp Start Time: 140735617642213
+00:03:01.494.188:     Amp Start Date: 2017-12-01 02:01:46.915999 PM GMT+1
+00:03:01.494.253:     Stream Up Time: 7523.441000 seconds
+00:03:01.494.302: 
+00:03:01.495.117: NSARecording.m:159 NSARecording:lastWrites top signal blocks 7
+00:03:01.495.286: NSARecording.m:1393 NSARecording:appendFlatlinedSamples EEG shift: Append 9 flatlined samples to epoch 1
+00:03:01.495.998: NSARecording.m:2938 NSARecording:writeEpoch #1, beginTime: 0, endTime: 181488000, firstBlock: 1, lastBlock: 12
+00:03:01.498.879: NSARecording.m:2661 NSARecording:writeWorkspace 
+00:03:01.503.695: NSARecording.m:1053 offset 2076, egiType 
+00:03:01.503.927: NSARecording.m:1053 offset 52, egiType 
+00:03:01.523.068: NSPopUpButton+Extras.m:91 NSPopUpButton:indexOfSelectedItemInRange: No selection in range {8, 1}
+00:03:01.527.122: NSDictionary+Extras.m:86 __NSDictionaryM:safeSetObject:forKey: object cannot be nil for key: channel settings
+00:03:01.527.394: NSADelegate.mm:790 NSADelegate:developmentFeaturesEnabled 1
+00:03:01.601.880: NSARecording.m:2707 00:03:01.601.909: NSARecording.m:3084 NSARecording:removeAcquiringXML 
+NSARecording:writeWorkspace
+00:03:01.613.089: NSAToolbarDelegate.m:694 NSAToolbarDelegate:updateInterface _onOff YES, _recordButton YES, _stopButton NO,
+00:03:01.613.253: PLTPatientTable.m:487 PLTPatientTable:reset 
+00:03:01.620.159: NSARecording.m:3093 NSARecording:removeAcquiringXML
+00:03:02.080.882: PLTRecord.m:1492 PLTRecord:lastWritesComplete: _recording
+00:03:02.081.328: --- NSARECORDING dealloc --------------------------------------------------------------------------------

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<PNSSet xmlns="http://www.egi.com/pnsSet_mff" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <name>test_171017 1.0</name>
+    <ampSeries>300</ampSeries>
+    <sensors>
+        <sensor>
+            <name>x</name>
+            <number>0</number>
+            <unit>uV</unit>
+            <psgType>0</psgType>
+            <mapping>6</mapping>
+            <samplingRate>0</samplingRate>
+            <sensorType>EMG</sensorType>
+            <highpass>0</highpass>
+            <lowpass>0</lowpass>
+            <notch>0</notch>
+            <groupNumber>1</groupNumber>
+            <defaultDisplayAmplitude>1000</defaultDisplayAmplitude>
+            <color>0.0000,0.0000,0.0000,1.0000</color>
+            <positiveUp>true</positiveUp>
+        </sensor>
+        <sensor>
+            <name>y</name>
+            <number>1</number>
+            <unit>uV</unit>
+            <psgType>0</psgType>
+            <mapping>5</mapping>
+            <samplingRate>0</samplingRate>
+            <sensorType>EMG</sensorType>
+            <highpass>0</highpass>
+            <lowpass>0</lowpass>
+            <notch>0</notch>
+            <groupNumber>1</groupNumber>
+            <defaultDisplayAmplitude>1000</defaultDisplayAmplitude>
+            <color>0.0000,0.0000,0.0000,1.0000</color>
+            <positiveUp>false</positiveUp>
+        </sensor>
+        <sensor>
+            <name>Flex L</name>
+            <number>2</number>
+            <unit>uV</unit>
+            <psgType>0</psgType>
+            <mapping>1</mapping>
+            <samplingRate>0</samplingRate>
+            <sensorType>EMG</sensorType>
+            <highpass>10</highpass>
+            <lowpass>120</lowpass>
+            <notch>50</notch>
+            <groupNumber>1</groupNumber>
+            <defaultDisplayAmplitude>10</defaultDisplayAmplitude>
+            <highpassDisplay>10</highpassDisplay>
+            <lowpassDisplay>120</lowpassDisplay>
+            <notchDisplay>50</notchDisplay>
+            <color>0.0000,0.0000,0.0000,1.0000</color>
+            <positiveUp>false</positiveUp>
+        </sensor>
+        <sensor>
+            <name>Extens L</name>
+            <number>3</number>
+            <unit>uV</unit>
+            <psgType>0</psgType>
+            <mapping>2</mapping>
+            <samplingRate>0</samplingRate>
+            <sensorType>EMG</sensorType>
+            <highpass>10</highpass>
+            <lowpass>120</lowpass>
+            <notch>50</notch>
+            <groupNumber>1</groupNumber>
+            <defaultDisplayAmplitude>10</defaultDisplayAmplitude>
+            <highpassDisplay>10</highpassDisplay>
+            <lowpassDisplay>120</lowpassDisplay>
+            <notchDisplay>50</notchDisplay>
+            <color>0.0000,0.0000,0.0000,1.0000</color>
+            <positiveUp>false</positiveUp>
+        </sensor>
+    </sensors>
+</PNSSet>
