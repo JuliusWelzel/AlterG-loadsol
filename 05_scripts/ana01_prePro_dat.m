@@ -18,7 +18,7 @@ end
 
 %% define config vars
 
-cfg.filer.HP = 0.1;
+cfg.filer.HP = 0.5;
 cfg.filter.LP = 40;
 cfg.exp.n_trials = 120;
 
