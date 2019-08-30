@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                     
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %      Distribution parameters time& force
 %
@@ -19,7 +19,7 @@ set(0,'DefaultAxesFontName', 'CMU Sans Serif')
 set(0,'DefaultTextFontname', 'CMU Sans Serif')
 
 
-%% Set MAIN path  and load data 
+%% Set MAIN path  and load data
 MAIN = 'C:\Users\juliu\Desktop\NG_kiel\moonwalk_CliH\';
 PATHIN_data = [MAIN '04_data\00_rawdata\']; %make sure to use \\ instead of \
 PATHOUT_data = [MAIN '04_data\01_pilot\'];
@@ -44,10 +44,10 @@ end
 close all
 
 for i = 1:numel(vars_idp)
-    
+
     figure
     fct_dat = dat_moon{:,strcmp(dat_moon.Properties.VariableNames,vars_idp{i})};
-    
+
     time = nanmean([dat_moon.AvgContactTimeLeft_ms_,dat_moon.AvgContactTimeRight_ms_],2);
     force = nanmean([dat_moon.ForceNormBWLeft,dat_moon.ForceNrmBWRight],2);
     time(isoutlier(time)) = NaN;
@@ -57,9 +57,8 @@ for i = 1:numel(vars_idp)
     scatterhist(time,force,'Group',dat_moon{:,strcmp(dat_moon.Properties.VariableNames,vars_idp{i})}...
         ,'Color',c_map(c_idx,:),'Kernel','on','Marker','.','MarkerSize',10)
     title(vars_idp{i})
-    xlabel 'time [s]'
+    xlabel 'time [ms]'
     ylabel 'force [N]'
     legend boxoff
     save_fig(gcf,PATHOUT_data,vars_idp{i},'fontsize',20);
 end
-
