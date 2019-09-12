@@ -89,7 +89,7 @@ xlabel 'Speed [km/h]'
 ylabel 'Norm Peak Force? [N]'
 xlim ([10 26])
 ylim ([1.6 2.5])
-xticks (fact_idp(2).cat)
+xticks ([60 80 100])
 
 title 'Replicate Thomson ea. (Fig. 2), JSS, 2017'
 legend(num2str(fact_idp(1).cat),'Location','southeast')
@@ -103,12 +103,12 @@ clear se
 close all
 alterG = dat_moon.AlterG_BW;
 speed = dat_moon.Speed;
-c_map = colormap('spring');
+c_map = colormap('cool');
 
  for g = 1:fact_idp(2).size %grouping
      idx_g = speed == fact_idp(2).cat(g);
      dat = force(idx_g);
-     c_idx = ceil(linspace(1,length(c_map)-10,fact_idp(2).size));
+     c_idx = ceil(linspace(1,length(c_map),fact_idp(2).size));
 
      for i = 1:fact_idp(1).size
         [m(i) se(i)] = mean_SEM(force(idx_g & alterG == fact_idp(1).cat(i))');
@@ -121,9 +121,9 @@ xlabel 'Alter-G [%]'
 ylabel 'Norm Peak Force? [N]'
 xlim ([55 105])
 ylim ([1.6 2.5])
-xticks (fact_idp(1).cat)
+xticks ([60 80 100])
 title 'Replicate Thomson ea. (Fig. 1), JSS, 2017'
 legend(num2str(fact_idp(2).cat),'Location','southeast')
 legend boxoff
-save_fig(gcf,PATHOUT_data,'Thomson_2017_fig1','fontsize',20);
+% save_fig(gcf,PATHOUT_data,'Thomson_2017_fig2','fontsize',20);
 
