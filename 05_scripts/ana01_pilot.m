@@ -127,3 +127,31 @@ legend(num2str(fact_idp(2).cat),'Location','southeast')
 legend boxoff
 save_fig(gcf,PATHOUT_data,'Thomson_2017_fig1','fontsize',20);
 
+%% fig. new gradients
+close all
+alterG = dat_moon.AlterG_BW;
+speed = dat_moon.Speed;
+gradient = dat_moon.Gradient;
+c_map = colormap('summer');
+
+ for g = 1:fact_idp(3).size %grouping
+     idx_g = gradient == fact_idp(3).cat(g);
+     dat = force(idx_g);
+     c_idx = ceil(linspace(1,length(c_map)-10,fact_idp(3).size));
+
+     for i = 1:fact_idp(2).size
+        [m(i) se(i)] = mean_SEM(force(idx_g & speed == fact_idp(2).cat(i))');
+     end
+     errorbar(fact_idp(2).cat,m,se,'LineWidth',1.5,'Color',c_map(c_idx(g),:))
+     hold on
+ end
+
+xlabel 'Speed [km/h]'
+ylabel 'Norm Peak Force? [N]'
+% xlim ([55 105])
+% ylim ([1.6 2.5])
+xticks (fact_idp(2).cat)
+title 'Replicate Thomson ea. (Fig. 1), JSS, 2017'
+legend(num2str(fact_idp(3).cat),'Location','southeast')
+legend boxoff
+% save_fig(gcf,PATHOUT_data,'Thomson_2017_fig1','fontsize',20);
