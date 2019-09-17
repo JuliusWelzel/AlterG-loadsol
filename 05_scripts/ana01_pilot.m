@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%      Distribution parameters time& force
+%      Distribution parameters time & force
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -39,6 +39,7 @@ for i = 1:numel(vars_idp)
    fact_idp(i).cat = unique(dat_moon{:,strcmp(dat_moon.Properties.VariableNames,vars_idp{i})});
    fact_idp(i).size = length(fact_idp(i).cat);
    fact_idp(i).name = vars_idp{i};
+    
 end
 
 close all
@@ -58,7 +59,7 @@ for i = 1:numel(vars_idp)
         ,'Color',c_map(c_idx,:),'Kernel','on','Marker','.','MarkerSize',10)
     title(vars_idp{i})
     xlabel 'time [ms]'
-    ylabel 'force [N]'
+    ylabel 'force [Bodyweight]'
     legend boxoff
     save_fig(gcf,PATHOUT_data,vars_idp{i},'fontsize',20);
 end
@@ -86,7 +87,7 @@ figure
  end
 
 xlabel 'Speed [km/h]'
-ylabel 'Norm Peak Force? [N]'
+ylabel 'Norm Peak Force? [Bodyweight]'
 xlim ([10 26])
 ylim ([1.6 2.5])
 xticks (fact_idp(2).cat)
@@ -118,7 +119,7 @@ c_map = colormap('spring');
  end
 
 xlabel 'Alter-G [%]'
-ylabel 'Norm Peak Force? [N]'
+ylabel 'Norm Peak Force? [Bodyweight]'
 xlim ([55 105])
 ylim ([1.6 2.5])
 xticks (fact_idp(1).cat)
@@ -140,18 +141,60 @@ c_map = colormap('summer');
      c_idx = ceil(linspace(1,length(c_map)-10,fact_idp(3).size));
 
      for i = 1:fact_idp(2).size
-        [m(i) se(i)] = mean_SEM(force(idx_g & speed == fact_idp(2).cat(i))');
+        [m_speed(i) se(i)] = mean_SEM(force(idx_g & speed == fact_idp(2).cat(i))');
      end
-     errorbar(fact_idp(2).cat,m,se,'LineWidth',1.5,'Color',c_map(c_idx(g),:))
+     errorbar(fact_idp(2).cat,m_speed,se,'LineWidth',1.5,'Color',c_map(c_idx(g),:))
      hold on
  end
 
 xlabel 'Speed [km/h]'
-ylabel 'Norm Peak Force? [N]'
-% xlim ([55 105])
-% ylim ([1.6 2.5])
+ylabel 'Norm Peak Force? [Bodyweight]'
+xlim ([10 26])
+ylim ([1.8 2.35])
 xticks (fact_idp(2).cat)
-title 'Replicate Thomson ea. (Fig. 1), JSS, 2017'
+title 'Norm Peak Force varies with Gradient'
 legend(num2str(fact_idp(3).cat),'Location','southeast')
 legend boxoff
-% save_fig(gcf,PATHOUT_data,'Thomson_2017_fig1','fontsize',20);
+save_fig(gcf,PATHOUT_data,'gradient_dependency','fontsize',20);
+
+%% 3D plot
+close all
+
+for i = 1:fact_idp(1).size %all alterG
+    idx_bw = alterG == fact_idp(1).cat(i);
+
+   for ii = 1:fact_idp(2).size %all speeds
+       idx_s = speed == fact_idp(2).cat(ii);
+       
+       for iii = 1:fact_idp(3).size %all grad
+            idx_g = gradient == fact_idp(3).cat(iii);
+            dat_3d(i,ii,iii) =  nanmean(force(idx_bw & idx_s & idx_g));
+       end
+   end
+   
+   surf(squeeze(dat_3d(i,:,:)))
+   hold on 
+end
+
+colormap (cb_names{1});
+
+ylabel 'Speed [km/h]'
+ylim([0 6])
+yticklabels(fact_idp(2).cat)
+
+zlim ([1.4 2.6])
+zlabel 'Norm Peak Force? [Bodyweight]'
+title 'Norm Peak Force varies with Gradient'
+legend(num2str(fact_idp(1).cat),'Location','northwest')
+legend boxoff
+
+xlabel 'Gradient [°]'
+xlim ([1 7])
+xticklabels(fact_idp(3).cat)
+xlim([0 8])
+
+savefig(gcf,[PATHOUT_data '3D_data_rep.fig'])
+
+
+
+
