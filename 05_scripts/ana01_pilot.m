@@ -155,7 +155,42 @@ xticks (fact_idp(2).cat)
 title 'Norm Peak Force varies with Gradient'
 legend(num2str(fact_idp(3).cat),'Location','southeast')
 legend boxoff
-save_fig(gcf,PATHOUT_data,'gradient_dependency','fontsize',20);
+save_fig(gcf,PATHOUT_data,'gradient_dep_speed','fontsize',20);
+
+%% fig. new gradients
+idx_group = 1; % %alterG
+idx_xvar = 3; %gradient
+
+close all
+alterG = dat_moon.AlterG_BW;
+speed = dat_moon.Speed;
+gradient = dat_moon.Gradient;
+c_map = colormap('cool');
+
+speed_ng = unique(speed(gradient<0));
+
+ for g = 1:fact_idp(idx_group).size %grouping
+     idx_g = alterG == fact_idp(idx_group).cat(g);
+     idx_speed = ismember(speed,speed_ng);
+     dat = force(idx_g & idx_speed);
+     c_idx = ceil(linspace(1,length(c_map)-10,fact_idp(idx_group).size));
+
+     for i = 1:fact_idp(idx_xvar).size
+        [m_grad(i) se(i)] = mean_SEM(force(idx_g & gradient == fact_idp(idx_xvar).cat(i))');
+     end
+     errorbar(fact_idp(idx_xvar).cat,m_grad,se,'LineWidth',1.5,'Color',c_map(c_idx(g),:))
+     hold on
+ end
+
+xlabel 'Gradient [°]'
+ylabel 'Norm Peak Force? [Bodyweight]'
+xlim ([-18 18])
+ylim ([1.55 2.4])
+xticks (fact_idp(idx_xvar).cat)
+title ({'Norm Peak Force varies with Gradient','averaged for 12 & 15 km/h'})
+legend(num2str(fact_idp(idx_group).cat),'Location','southeast')
+legend boxoff
+save_fig(gcf,PATHOUT_data,'gradient_dep_alterG','fontsize',20);
 
 %% 3D plot
 close all
