@@ -241,7 +241,7 @@ yticklabels(fact_idp(2).cat)
 
 zlim ([1.4 2.6])
 zlabel 'Norm Peak Force? [Bodyweight]'
-title ({'Mutiple linear regression (including gradient)',['adj. R²: ' num2str(round(reg_grad.Rsquared.Adjusted,3)) ...
+title ({'Mutiple linear regression (including gradient)','force = b1*BW+b2*ln(speed)',['adj. R²: ' num2str(round(reg_grad.Rsquared.Adjusted,3)) ...
     ' / p <0.0001']})
 legend(num2str(fact_idp(1).cat),'Location','northwest')
 legend boxoff
