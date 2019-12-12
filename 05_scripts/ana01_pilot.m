@@ -19,7 +19,7 @@ set(0,'DefaultAxesFontName', 'CMU Sans Serif')
 set(0,'DefaultTextFontname', 'CMU Sans Serif')
 
 % for plot
-toplot = 0;
+toplot = 1;
 
 %% Set MAIN path  and load data
 MAIN = 'C:\Users\Sara\Desktop\NG_kiel\moonwalk_CH\';
@@ -34,11 +34,11 @@ idx_moon= find(contains({list.name},'raw_data'),1); % find the raw flesh
 dat_moon = readtable([PATHIN_data list(idx_moon).name],'Sheet','Sheet1');
 
 %% Disttribution params
-vars_idp = {'AlterG_BW','Speed','Gradient'};
+vars_idp = {'AlterG BW','Speed','Gradient'};
 cb_names = {'cool','spring','summer'};
 
 for i = 1:numel(vars_idp)
-   fact_idp(i).cat = unique(dat_moon{:,strcmp(dat_moon.Properties.VariableNames,vars_idp{i})});
+   fact_idp(i).cat = unique(dat_moon{:,startsWith(dat_moon.Properties.VariableNames,vars_idp{i})});
    fact_idp(i).size = length(fact_idp(i).cat);
    fact_idp(i).name = vars_idp{i};
     
@@ -62,7 +62,7 @@ for i = 1:numel(vars_idp)
     scatterhist(time,force,'Group',dat_moon{:,strcmp(dat_moon.Properties.VariableNames,vars_idp{i})}...
         ,'Color',c_map(c_idx,:),'Kernel','on','Marker','.','MarkerSize',10)
     title(vars_idp{i})
-    xlabel 'time [ms]'
+    xlabel 'avg. contact-time [ms]'
     ylabel 'force [Bodyweight]'
     legend boxoff
     save_fig(gcf,PATHOUT_data,vars_idp{i},'fontsize',20);
