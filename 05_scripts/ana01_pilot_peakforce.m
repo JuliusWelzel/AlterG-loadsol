@@ -34,7 +34,7 @@ idx_moon= find(contains({list.name},'raw_data'),1); % find the raw flesh
 dat_moon = readtable([PATHIN_data list(idx_moon).name],'Sheet','Sheet1');
 
 %% Disttribution params
-vars_idp = {'AlterG BW','Speed','Gradient'};
+vars_idp = {'AlterG_BW','Speed','Gradient'};
 cb_names = {'cool','spring','summer'};
 
 for i = 1:numel(vars_idp)
@@ -79,7 +79,6 @@ speed = dat_moon.Speed;
 c_map = colormap('cool');
 
 if toplot
-figure
  for g = 1:fact_idp(1).size
      idx_g = alterG == fact_idp(1).cat(g);
      dat = force(idx_g);
@@ -135,7 +134,15 @@ xlim ([55 105])
 ylim ([1.6 2.5])
 xticks (fact_idp(1).cat)
 reg_e1 = fitlm([alterG log(speed)],force)
+%fitlm
+reg_grad = fitlm([alterG log(speed)],force,'VarNames',{'Bodyweight','log(Speed)','Peak Force'})
 
+% out parameters
+[ resreg resregover ] = reg2tab(reg_grad);
+writetable(resreg,[PATHOUT_data 'regcoef_peakforce_1.xls'],'WriteRowNames',true);
+writetable(resregover,[PATHOUT_data 'mdlcoef_peakforce_1.xls']);
+
+%continue plot
 title ({'Replicate Thomson ea. (Fig. 1), JSS, 2017',['adj. R²: ' num2str(round(reg_e1.Rsquared.Adjusted,3)) ...
     ' / p <0.0001']})
 
@@ -214,6 +221,36 @@ save_fig(gcf,PATHOUT_data,'gradient_dep_alterG','fontsize',20);
 end
 
 
+%% Stats for 3D
+
+sf = fit([speed(~isnan(force)), gradient(~isnan(force))],force(~isnan(force)),'poly11')
+plot(sf,[speed(~isnan(force)),gradient(~isnan(force))],force(~isnan(force)))
+
+colormap (cb_names{1});
+
+xlabel 'Speed [km/h]'
+xticks (unique(speed))
+ylabel 'Gradient [°]'
+yticks (unique(gradient))
+zlim ([1.4 2.6])
+zlabel 'Norm Peak Force [Bodyweight]'
+axis tight
+
+%fitlm
+reg_grad = fitlm([alterG log(speed) gradient],force,'VarNames',{'Bodyweight','log(Speed)','Gradient','Peak Force'})
+
+% out parameters
+[ resreg resregover ] = reg2tab(reg_grad);
+writetable(resreg,[PATHOUT_data 'regcoef_peakforce_2.xls'],'WriteRowNames',true);
+writetable(resregover,[PATHOUT_data 'mdlcoef_peakforce_2.xls']);
+
+
+title ({'Mutiple linear regression (including gradient)',['adj. R²: ' num2str(round(reg_grad.Rsquared.Adjusted,3)) ...
+    ' / p <0.0001']})
+
+save_fig(gcf,PATHOUT_data,'mReg_plot');
+
+
 %% 3D plot
 close all
 
@@ -255,26 +292,6 @@ axis tight
 savefig(gcf,[PATHOUT_data '3D_data_rep.fig']);
 save_fig(gcf,PATHOUT_data,'3D_all');
 
-%% Stats for 3D
-
-sf = fit([speed(~isnan(force)), gradient(~isnan(force))],force(~isnan(force)),'poly11')
-plot(sf,[speed(~isnan(force)),gradient(~isnan(force))],force(~isnan(force)))
-
-colormap (cb_names{1});
-
-xlabel 'Speed [km/h]'
-xticks (unique(speed))
-ylabel 'Gradient [°]'
-yticks (unique(gradient))
-zlim ([1.4 2.6])
-zlabel 'Norm Peak Force [Bodyweight]'
-axis tight
-
-reg_grad = fitlm([alterG log(speed) gradient],force)
-title ({'Mutiple linear regression (including gradient)',['adj. R²: ' num2str(round(reg_grad.Rsquared.Adjusted,3)) ...
-    ' / p <0.0001']})
-
-save_fig(gcf,PATHOUT_data,'mReg_plot');
 
 
 
