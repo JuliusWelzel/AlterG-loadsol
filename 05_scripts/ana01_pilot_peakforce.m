@@ -19,10 +19,10 @@ set(0,'DefaultAxesFontName', 'CMU Sans Serif')
 set(0,'DefaultTextFontname', 'CMU Sans Serif')
 
 % for plot
-toplot = 1;
+toplot = 0;
 
 %% Set MAIN path  and load data
-MAIN = 'C:\Users\Sara\Desktop\NG_kiel\moonwalk_CH\';
+MAIN = [fileparts(pwd) '\'];
 PATHIN_data = [MAIN '04_data\00_rawdata\']; %make sure to use \\ instead of \
 PATHOUT_data = [MAIN '04_data\01_pilot_peakforce\'];
 addpath(genpath(MAIN));
@@ -30,7 +30,7 @@ if ~exist(PATHOUT_data);mkdir(PATHOUT_data);end
 
 list = dir(fullfile(PATHIN_data));
 
-idx_moon= find(contains({list.name},'raw_data'),1); % find the raw flesh
+idx_moon = find(contains({list.name},'raw_data'),1); % find the raw flesh
 dat_moon = readtable([PATHIN_data list(idx_moon).name],'Sheet','Sheet1');
 
 %% Disttribution params

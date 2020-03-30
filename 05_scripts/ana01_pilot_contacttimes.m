@@ -19,7 +19,7 @@ set(0,'DefaultAxesFontName', 'CMU Sans Serif')
 set(0,'DefaultTextFontname', 'CMU Sans Serif')
 
 % for plot
-toplot = 1;
+toplot = 0;
 
 %% Set MAIN path  and load data
 MAIN = 'C:\Users\Sara\Desktop\NG_kiel\moonwalk_CH\';
