@@ -45,5 +45,8 @@ writecell(tbl,[PATHOUT_data 'tbl_ANOVA.xls']);
             
             
 multcompare(stats,'Dimension',[1 2 3])
+
+
+% fig2plotly()
 savefig([PATHOUT_data 'mlt_cmpr_ANOVA.fig'])
-save_fig(gcf,PATHOUT_data,'mlt_cmpr_ANOVA','FigSize',[0 0 20 40],'FontSize',8)
+% save_fig(gcf,PATHOUT_data,'mlt_cmpr_ANOVA','FigSize',[0 0 20 40],'FontSize',8)
