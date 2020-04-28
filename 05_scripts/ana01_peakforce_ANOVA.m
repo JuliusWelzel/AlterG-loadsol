@@ -46,7 +46,25 @@ writecell(tbl,[PATHOUT_data 'tbl_ANOVA.xls']);
             
 multcompare(stats,'Dimension',[1 2 3])
 
-
 % fig2plotly()
 savefig([PATHOUT_data 'mlt_cmpr_ANOVA.fig'])
+
+
 % save_fig(gcf,PATHOUT_data,'mlt_cmpr_ANOVA','FigSize',[0 0 20 40],'FontSize',8)
+%% export data for web
+dat_pages = table;
+dat_pages.force = mean([dat_moon.ForceNormBWLeft,dat_moon.ForceNrmBWRight],2);
+dat_pages.time = mean([dat_moon.AvgContactTimeLeft_ms_,dat_moon.AvgContactTimeRight_ms_],2);
+
+dat_pages.force(isoutlier(dat_pages.force)) = NaN;
+dat_pages.time(isoutlier(dat_pages.time)) = NaN;
+
+dat_pages.speed = dat_moon.Speed;
+dat_pages.gradtient = dat_moon.Gradient;
+dat_pages.bw = dat_moon.AlterG_BW;
+
+
+writetable(dat_pages,[PATHOUT_data 'dat_pages.csv'])
+
+
+
