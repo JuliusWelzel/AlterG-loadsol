@@ -7,7 +7,7 @@ sem_data = [];
 
 for r = 1:size(data,1)
     mean_data(r) = nanmean(data(r,:));
-    sem_data(r) = nanstd(data(r,:))/sqrt(length(data(r,:)));
+    sem_data(r) = nanstd(data(r,:));
 end
 
 end

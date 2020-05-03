@@ -14,12 +14,12 @@ clc;close all;clear all;
 %Change MatLab defaults
 set(0,'defaultfigurecolor',[1 1 1]);
 % Change default axes fonts.
-set(0,'DefaultAxesFontName', 'CMU Sans Serif')
+set(0,'DefaultAxesFontName', 'Arial')
 % Change default text fonts.
-set(0,'DefaultTextFontname', 'CMU Sans Serif')
+set(0,'DefaultTextFontname', 'Arial')
 
 % for plot
-toplot = 0;
+toplot = 1;
 
 %% Set MAIN path  and load data
 MAIN = [fileparts(pwd) '\'];
@@ -52,8 +52,8 @@ for i = 1:numel(vars_idp)
 
     time = nanmean([dat_moon.AvgContactTimeLeft_ms_,dat_moon.AvgContactTimeRight_ms_],2);
     force = nanmean([dat_moon.ForceNormBWLeft,dat_moon.ForceNrmBWRight],2);
-    time(isoutlier(time)) = NaN;
-    force(isoutlier(force)) = NaN;
+    time(isoutlier(time,'quartile')) = NaN;
+    force(isoutlier(force,'quartile')) = NaN;
     c_map = colormap(cb_names{i});
     c_idx = ceil(linspace(1,length(c_map),fact_idp(i).size));
     
@@ -222,20 +222,6 @@ end
 
 
 %% Stats for 3D
-
-sf = fit([speed(~isnan(force)), gradient(~isnan(force))],force(~isnan(force)),'poly11')
-plot(sf,[speed(~isnan(force)),gradient(~isnan(force))],force(~isnan(force)))
-
-colormap (cb_names{1});
-
-xlabel 'Speed [km/h]'
-xticks (unique(speed))
-ylabel 'Gradient [°]'
-yticks (unique(gradient))
-zlim ([1.4 2.6])
-zlabel 'Norm Peak Force [Bodyweight]'
-axis tight
-
 %fitlm
 reg_grad = fitlm([alterG log(speed) gradient],force,'VarNames',{'Bodyweight','log(Speed)','Gradient','Peak Force'})
 
@@ -243,13 +229,6 @@ reg_grad = fitlm([alterG log(speed) gradient],force,'VarNames',{'Bodyweight','lo
 [ resreg resregover ] = reg2tab(reg_grad);
 writetable(resreg,[PATHOUT_data 'regcoef_peakforce_2.xls'],'WriteRowNames',true);
 writetable(resregover,[PATHOUT_data 'mdlcoef_peakforce_2.xls']);
-
-
-title ({'Mutiple linear regression (including gradient)',['adj. R²: ' num2str(round(reg_grad.Rsquared.Adjusted,3)) ...
-    ' / p <0.0001']})
-
-save_fig(gcf,PATHOUT_data,'mReg_plot');
-
 
 %% 3D plot
 close all
@@ -273,7 +252,6 @@ end
 colormap (cb_names{1});
 
 ylabel 'Speed [km/h]'
-ylim([0 6])
 yticklabels(fact_idp(2).cat)
 
 zlim ([1.4 2.6])
