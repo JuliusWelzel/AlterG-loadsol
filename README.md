@@ -1,4 +1,4 @@
-# AlterG-loadsol-stidy
+# AlterG-loadsol-study
 A treadmill project for the examination of the effect of running speed, bodyweight support at different gradients
 
 ## Overall study conduction
