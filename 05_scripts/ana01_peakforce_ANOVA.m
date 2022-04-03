@@ -31,7 +31,10 @@ if ~exist(PATHOUT_data);mkdir(PATHOUT_data);end
 list = dir(fullfile(PATHIN_data));
 
 idx_moon = find(contains({list.name},'raw_data'),1); % find the raw flesh
-dat_moon = readtable([PATHIN_data list(idx_moon).name],'Sheet','Sheet1');
+dat_moon = readtable([PATHIN_data list(idx_moon).name]);
+
+dat_moon.ForceNormBWLeft = str2double(dat_moon.ForceNormBWLeft);
+dat_moon.ForceNrmBWRight = str2double(dat_moon.ForceNrmBWRight);
 
 %% Disttribution params
 nms_UV = {'AlterG_{BW}','Speed','Gradient'};
@@ -44,7 +47,9 @@ nms_UV = {'AlterG_{BW}','Speed','Gradient'};
 writecell(tbl,[PATHOUT_data 'tbl_ANOVA.xls']);
             
             
-multcompare(stats,'Dimension',[1 2 3])
+[c,~,~,nms] = multcompare(stats,'Dimension',[1 2 3])
+
+
 
 % fig2plotly()
 savefig([PATHOUT_data 'mlt_cmpr_ANOVA.fig'])
@@ -67,4 +72,4 @@ dat_pages.bw = dat_moon.AlterG_BW;
 writetable(dat_pages,[PATHOUT_data 'dat_pages.csv'])
 
 
-
+dat_speed = unstack(dat_pages,{'force','time'},'speed')

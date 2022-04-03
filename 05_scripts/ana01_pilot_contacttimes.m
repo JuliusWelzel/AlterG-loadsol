@@ -31,7 +31,7 @@ if ~exist(PATHOUT_data);mkdir(PATHOUT_data);end
 list = dir(fullfile(PATHIN_data));
 
 idx_moon= find(contains({list.name},'raw_data'),1); % find the data
-dat_moon = readtable([PATHIN_data list(idx_moon).name],'Sheet','Sheet1');
+dat_moon = readtable([PATHIN_data list(idx_moon).name]);
 
 %% Disttribution params
 vars_idp = {'AlterG_BW','Speed','Gradient'};
